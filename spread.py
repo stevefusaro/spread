@@ -10,22 +10,7 @@ def _parse_args():
     return parser.parse_args()
 
 
-def _process_games(weekly_games):
-    for week, games in weekly_games.items():
-        for data in games:
-            home_team = data['home_team']
-            away_team = data['away_team']
-            away_score = data.get('away_score', 0)
-            home_score = data.get('home_score', 0)
-            if home_score > away_score:
-                won_team = home_team
-                lost_team = away_team
-            else:
-                won_team = away_team
-                lost_team = home_team
-
-
-def _get_spread_picks(week_games):
+def _make_picks(week_games):
     week_games.sort(key=lambda x: -x['spread_float'])
     picks = {}
     points = 16
@@ -42,20 +27,23 @@ def _get_spread_picks(week_games):
         g['points'] = points
         points -= 1
 
+    return won
+
 
 def main():
     args = _parse_args()
     week_html = get_nfl_html(args.weeks, args.source)
+    points_won = 0
     for week, html in week_html.items():
         print('---- WEEK {} ----'.format(week))
         games = extract_html_games(html)
-        _get_spread_picks(games)
+        points_won += _make_picks(games)
         games.sort(key=lambda x: -x['points'])
         for g in games:
             print('{} {} {} {} {} picked {} and {}'.format(
                 g['home_team'], g['away_team'], g['home_score'], g['away_score'],
                 g['spread_str'], g['pick'], g['outcome'])
             )
-
+    print('Total: {} points'.format(points_won))
 if __name__ == '__main__':
     main()
