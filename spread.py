@@ -1,10 +1,11 @@
 import argparse
 from pprint import pprint
-from crawl import get_nfl_scores
+from crawl import get_nfl_html, extract_html_games
 
 
 def _parse_args():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument('source', choices=['file', 'web'])
     parser.add_argument('-w', '--weeks', type=int, nargs='*', default=range(1, 18))
     return parser.parse_args()
 
@@ -24,15 +25,16 @@ def _process_games(weekly_games):
                 lost_team = home_team
 
 
+
+
 def main():
     args = _parse_args()
-    games = get_nfl_scores(args.weeks)
-    pprint(games)
-    for week, data_list in games.items():
+    week_html = get_nfl_html(args.weeks, args.source)
+    for week, html in week_html.items():
         print('Week {}'.format(week))
-        for data in data_list:
-            print('{} {} {} {}'.format(data['home_team'], data['away_team'], data['home_score'], data['away_score']))
-    import ipdb; ipdb.set_trace()
+        games = extract_html_games(html)
+        for g in games:
+            print('{} {} {} {}'.format(g['home_team'], g['away_team'], g['home_score'], g['away_score']))
 
 if __name__ == '__main__':
     main()

@@ -7,22 +7,22 @@ from constants import ABREV_BY_MASCOT, DATA_DIR
 from driver import get_driver
 
 
-def get_nfl_scores(weeks):
-    scores_by_week = {}
-    driver = get_driver()
+def get_nfl_html(weeks, source):
+    assert source in ('file', 'web')
+    force_update = False if source == 'file' else True
+    driver = get_driver() if source == 'web' else None
     week_html = {}
     try:
         for week in weeks:
-            html = _get_week_html(driver, week)
+            html = _get_week_html(driver, week, force_update)
             week_html[week] = html
-        for week, html in week_html.items():
-            scores_by_week[week] = _extract_html_games(html)
     finally:
-        driver.quit()
-    return scores_by_week
+        if driver:
+            driver.quit()
+    return week_html
 
 
-def _get_week_html(driver, week, force_update=False):
+def _get_week_html(driver, week, force_update):
     html_path = '/'.join([DATA_DIR,
                           'html',
                           'week_%s_scores.html' % week])
@@ -54,7 +54,7 @@ def _foo(v):
         return v
 
 
-def _extract_html_games(html):
+def extract_html_games(html):
     soup = BeautifulSoup(html, 'html.parser')
     table = soup.find('table', class_='table')
     games = []
