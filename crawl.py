@@ -64,16 +64,31 @@ def extract_html_games(html):
             games.append({})
             continue
         spread = _foo(row.find(class_='spread'))
+        spread = spread.replace('(', '').replace(')', '')
+        away_mascot = row.find_all(class_='mascot')[0].text
+        home_mascot = row.find_all(class_='mascot')[1].text
+
         game = {
             'away_score': _foo(row.find(class_='score_away')),
             'home_score': _foo(row.find(class_='score_home')),
-            'away_mascot': row.find_all(class_='mascot')[0].text,
-            'home_mascot': row.find_all(class_='mascot')[1].text,
-            'spread': spread,
+            'spread_str': spread,
+            'spread_float': float(spread[1:]),
+            'spread_dir': spread[0],
+            'home_team': ABREV_BY_MASCOT[home_mascot],
+            'away_team': ABREV_BY_MASCOT[away_mascot],
         }
-        game.update({
-            'home_team': ABREV_BY_MASCOT[game['home_mascot']],
-            'away_team': ABREV_BY_MASCOT[game['away_mascot']],
-        })
+
+        home_team = game['home_team']
+        away_team = game['away_team']
+        away_score = game.get('away_score', 0)
+        home_score = game.get('home_score', 0)
+        if home_score > away_score:
+            won_team = home_team
+            lost_team = away_team
+        else:
+            won_team = away_team
+            lost_team = home_team
+        game['won_team'] = won_team
+        game['lost_team'] = lost_team
         games.append(game)
     return games

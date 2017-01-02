@@ -25,14 +25,37 @@ def _process_games(weekly_games):
                 lost_team = home_team
 
 
+def _get_spread_picks(week_games):
+    week_games.sort(key=lambda x: -x['spread_float'])
+    picks = {}
+    points = 16
+    won = 0
+    for g in week_games:
+        pick = g['home_team'] if g['spread_dir'] == '+' else g['away_team']
+        picks[points] = pick
+        if pick == g['won_team']:
+            won += points
+            g['outcome'] = 'won'
+        else:
+            g['outcome'] = 'lost'
+        g['pick'] = '{} for {} pts'.format(pick, points)
+        g['points'] = points
+        points -= 1
+
+
 def main():
     args = _parse_args()
     week_html = get_nfl_html(args.weeks, args.source)
     for week, html in week_html.items():
-        print('Week {}'.format(week))
+        print('---- WEEK {} ----'.format(week))
         games = extract_html_games(html)
+        _get_spread_picks(games)
+        games.sort(key=lambda x: -x['points'])
         for g in games:
-            print('{} {} {} {} {}'.format(g['home_team'], g['away_team'], g['home_score'], g['away_score'], g['spread']))
+            print('{} {} {} {} {} picked {} and {}'.format(
+                g['home_team'], g['away_team'], g['home_score'], g['away_score'],
+                g['spread_str'], g['pick'], g['outcome'])
+            )
 
 if __name__ == '__main__':
     main()
