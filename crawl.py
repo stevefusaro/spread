@@ -63,11 +63,13 @@ def extract_html_games(html):
         if not row.find(class_='score_away'):
             games.append({})
             continue
+        spread = _foo(row.find(class_='spread'))
         game = {
             'away_score': _foo(row.find(class_='score_away')),
             'home_score': _foo(row.find(class_='score_home')),
             'away_mascot': row.find_all(class_='mascot')[0].text,
             'home_mascot': row.find_all(class_='mascot')[1].text,
+            'spread': spread,
         }
         game.update({
             'home_team': ABREV_BY_MASCOT[game['home_mascot']],

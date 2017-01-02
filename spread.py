@@ -25,8 +25,6 @@ def _process_games(weekly_games):
                 lost_team = home_team
 
 
-
-
 def main():
     args = _parse_args()
     week_html = get_nfl_html(args.weeks, args.source)
@@ -34,7 +32,7 @@ def main():
         print('Week {}'.format(week))
         games = extract_html_games(html)
         for g in games:
-            print('{} {} {} {}'.format(g['home_team'], g['away_team'], g['home_score'], g['away_score']))
+            print('{} {} {} {} {}'.format(g['home_team'], g['away_team'], g['home_score'], g['away_score'], g['spread']))
 
 if __name__ == '__main__':
     main()
