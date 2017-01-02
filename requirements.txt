@@ -1,0 +1,7 @@
+simplejson
+ipython
+ipdb
+selenium
+beautifulsoup4
+nflgame
+argparse

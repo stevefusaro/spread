@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+		<meta charset="utf-8" />
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="Run your NFL Football Pool with us! Hosting Pick 'Em, Survivor, and Confidence Pools, RunYourPool is a premier sports pool hosting and management service." />
+		<meta name="keywords" content="nfl pool, football pool, nfl football pool, survivor pools, confidence, point spread, nfl survivor, ncaa tournament, ncaa basketball, march madness pool, mens basketball pool, bracket, brackets, ncaa brackets, college basketball, office pools, office pool, run pool" />
+		<meta name="robots" content="index,follow" />
+		<meta name="author" content="" />
+		
+		<title>Run your Football, March Madness, Baseball, Golf, and other pools at RunYourPool.com</title>
+		
+
+		
+		<script async="" src="//www.google-analytics.com/analytics.js"></script><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+		<script src="/bootstrap3.3.7/js/bootstrap.min.js"></script>
+		<link href="/bootstrap3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="/assets/plugins/font-awesome/css/font-awesome.min.css" />
+		<link href="/favicon.ico" rel="shortcut icon" />
+		<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" />
+		
+		<style>
+		body {font-family: Segoe UI,"Helvetica Neue", Helvetica, Arial, sans-serif;}
+		h1, h2, h3, h4, h5, h6  {font-family: Segoe UI,"Helvetica Neue", Helvetica, Arial, sans-serif;font-weight:bold;}
+		h1 {font-size:26px;margin: 15px 0px 15px 0px;color:#247145}
+		h2 {font-size:24px;}
+		h3 {font-size:18px;}
+		h4 {font-size:16px;}
+		
+		p {margin: 10px 0px 10px 0px;}
+		
+		.standardText {}
+		.largeText {}
+		.info {color:#888;font-style:italic;}
+		
+		.btn-light {background-color:#eaeaea;color:#666;border-color: #e5e5e5;}
+		.btn-light:hover, .btn-light:focus, .btn-light:active, .btn-light.active {
+			background-color: #e0e0e0;
+			border-color: #d8d8d8;
+			color:#666;
+		}
+
+		#liLogin {display:none;}
+		
+		.form-control {height:inherit;padding:4px 6px;}
+
+		.container {max-width: 970px;}
+
+		.contentRowExtended .container {min-height:300px;}
+		
+		.headerRowExtended {background-color:#1f5f3b;width:100%;}
+		.headerRowExtended .container {padding:0px;}
+		.headerRow {background-color:#1f5f3b;padding-top:14px;padding-bottom:13px;background-image:url(//www.runyourpool.com/images/header_v3/header_bg.jpg);background-repeat:no-repeat;height:93px;}
+		
+		.footerRowExtended {background-color: #dddddd;width:100%;text-align:center;margin-top:25px;font-size:12px;}
+		#footerMain {padding:10px;}
+		.navRowExtended {background-color:#ffffff;width:100%;line-height:30px;background-image:url(//www.runyourpool.com/images/header_v2/navBG1.jpg);background-repeat:repeat-x;color:#fff;}
+		.navRowExtended .container {padding:0px;}
+		.navbar {margin-bottom:0px;min-height:inherit;background-color:transparent;padding:0px;border-left-width:0px;border-right-width:0px;}
+		.navbar .container {padding-left:15px;padding-right:15px;}
+		.navbar-nav {margin:0px;width:100% !important;margin-top:-1px;}
+		.navbar-inner {padding:0px;background-color:inherit;}
+		.navbar-collapse {padding:0px;}
+		.navbar .nav &gt; li {white-space:nowrap;text-align:center;background-image:url(//www.runyourpool.com/images/header_v2/navBG1.jpg);background-repeat:repeat-x;}
+		.navbar .nav &gt; li.col-lg-1, .navbar .nav &gt; li.col-lg-2 {padding:0px;}
+		.navbar .nav &gt; li &gt; a {color:#ffffff;text-shadow:none;background-image:url(//www.runyourpool.com/images/header_v2/navSeparator.jpg);background-repeat:no-repeat;font-size:13px;padding-top:5px;padding-bottom:7px;}
+		.navbar .nav &gt; li &gt; a:hover {background-color:#494641;color:#ffffff;}
+		
+		li.dropdown &gt; ul.dropdown-menu &gt; li.i a {padding-left:30px;}
+		
+		.nav&gt;li&gt;a:hover, .nav&gt;li&gt;a:focus {background-color:inherit;}
+		.dropdown-menu&gt;li&gt;a:hover, .dropdown-menu&gt;li&gt;a:focus {background-color:#ccc;}
+		.navbar-nav .caret {border-top-color:#ffffff !important;border-bottom-color:#ffffff !important;}
+		
+		.navbar-collapse.in {overflow-y: inherit !important;margin-top:30px; }
+
+		.navbar-toggle {
+			width:inherit;
+			position: inherit;
+			top: inherit;
+			right: inherit;
+			width: inherit;
+			height: inherit;
+			padding: inherit;
+			background-color: inherit;
+			border: inherit;
+			border-radius: inherit;
+		}
+		.navbar-toggle:hover, .navbar-toggle:focus {background-color:inherit;}
+		.navbar-toggle li {float:left;}
+		.navbar-nav&gt;.open&gt;a, .navbar-nav&gt;.open&gt;a:hover, .navbar-nav&gt;.open&gt;a:focus {
+			color:#ffffff;
+			background-color: #494641;
+		}
+		
+		.width4 {width:4%;}
+		.width7 {width:7%;}
+		.width10 {width:10%;}
+		.width12 {width:12%;}
+		.width13 {width:13%;}
+		.width14 {width:13%;}
+		.width15 {width:15%;}
+		.width16 {width:16%;}
+		.width17 {width:17%;}
+		.width18 {width:18%;}
+
+		.logoContainer {text-align:left;width:41.66666666666667%;margin:0px;right:0px;float:left;padding-left:10px;}
+
+		.loginContainer {float:right;width:41.66666666666667%;}
+		.loginContainer a {color:#ffffff;}
+		.loginContainer form {margin:0px;min-width:317px;max-width:317px;color:#ffffff;}
+		.loginContainer .credentialsContainer .credentials {clear:both;font-size:13px;padding-bottom:3px;color:#ffffff;}
+		.loginContainer .credentialsContainer a {color:#ffffff;}
+		.loginContainer .input-medium {width:155px;}
+		.loginContainer .form-control {height:inherit;padding:2px 5px;display: inline-block;}
+		.loginContainer .btn {padding:2px 12px;margin-right:4px;margin-top:10px;}
+		.loginContainer .help {float:left;font-size:12px;padding-left:2px;margin-top:14px;}
+		
+		.tooltip-inner {background-color:#000000;;}
+		.tooltip.bottom .tooltip-arrow {border-bottom-color:#000000;}
+		
+		@media (max-width: 990px) {
+			.headerRow {background-size: 100% 93px;}
+			.navbar .container {padding:0px;}
+			.contentRowExtended .container {padding:0px;}
+			.contentRowExtended .container &gt; .row {margin:0px;}
+			/*
+			.width4 {width:3%;}
+			.width7 {width:6%;}
+			.width12 {width:11%;}
+			.width13 {width:11%;}
+			.width15 {width:13%;}
+			.width16 {width:14%;}
+			.width18 {width:16%;}
+			*/
+		}
+		
+		@media (min-width: 768px) and (max-width: 990px) {
+			.row {margin-left:0px;margin-right:0px;}
+			
+			.nav&gt;li&gt;a {padding-left:10px;padding-right:10px;}
+		}
+		
+		@media (max-width: 767px) {
+			.width4 {width:100%;}
+			.width7 {width:100%;}
+			.width10 {width:100%;}
+			.width12 {width:100%;}
+			.width13 {width:100%;}
+			.width14 {width:100%;}
+			.width15 {width:100%;}
+			.width16 {width:100%;}
+			.width17 {width:100%;}
+			.width18 {width:100%;}
+			.navbar {min-width:291px;}
+			
+			.navbar .nav &gt; li {text-align:left;background-image:none;border-bottom:solid 1px #666; background-color:#333;}
+			.navbar .nav li.disabled {margin-left:-10px;}
+			.navbar .nav &gt; li &gt; a {color:#ddd !important;font-size:14px !important;padding-top:8px;padding-bottom:9px;}
+			
+			.navbar .nav &gt; li:first-child {padding-top:4px;}
+			.navbar .nav &gt; li &gt; a:hover,.navbar .nav &gt; li.open &gt; a {background-color:#dddddd; color:#333 !important;}
+
+			.navbar .nav .caret {
+			  border-top-color: #ddd !important;
+			  border-bottom-color: #ddd !important;
+			}
+			.navbar .nav &gt; li &gt; a:hover .caret,.navbar .nav li.open .caret {
+			  border-top-color: #333 !important;
+			  border-bottom-color: #333 !important;
+			}
+
+			.dropdown .dropdown-menu&gt;li&gt;a { color:#ddd; }
+			.dropdown .dropdown-menu&gt;li&gt;a:hover { color:#333; }
+
+			#liLogin {display:block;}
+			.loggedIn {color:#ddd;}
+
+			.logoContainer {margin-bottom:10px;padding:0px;float:left; text-align: left;min-width: 100px;}
+			.logoContainer img {max-width:100%;}
+			.logoContainer.col-lg-5 {width:70% !important; }
+			.menuContainer {width:30%; float:left; text-align: right;}
+			.navRowExtended {background-image: none;}
+			.navbar-collapse.in {margin-top:0;}
+			.navbar .nav {box-shadow: 0px 5px 5px -5px #888888;}
+
+		
+			.navbar .nav.navbar-toggle li {border-bottom:solid 0px #ccc;}
+			.navbar .nav.navbar-toggle li:first-child {padding-top:0px;}
+			.navbar .nav.navbar-toggle li a {color:#ffffff !important;font-size:12px !important;}
+			.navbar .nav.navbar-toggle li a:hover {background-color: #494641;}
+			.navbar .nav.navbar-toggle .caret {border-top-color: #ffffff !important;border-bottom-color: #ffffff !important;}
+			.navbar .nav.navbar-toggle {box-shadow: none;}
+			.navbar .nav &gt; li &gt; ul &gt; li {padding-left:35px;}
+
+			.nav &gt; li &gt;a {padding:10px 15px;}
+			.nav-collapse.navbar-responsive-collapse.in {background-color:#999999;}
+			.nav-collapse.navbar-responsive-collapse.in .nav &gt; li &gt; a {background-image:none;border-bottom:solid 1px #cccccc;border-radius: 0px;font-size:13px;}
+			.navbar-collapse {margin-right:0px !important;}
+			.navbar-collapse .nav &gt; li &gt; a {padding-left:30px;}
+
+			.navbar-btn {height:20px;}
+		}
+
+		@media (max-width: 700px) {
+			.logoContainer img {max-width:120%;}
+			.loginContainer .input-medium {width:48%;}
+			.loginContainer form {min-width:250px;}
+			.nofificationsListItem {color:#ddd;}
+		}
+		
+		@media (max-width: 550px) {
+			.headerRow {padding-bottom:0px;padding-top:5px;padding-left:10px;padding-right:10px;background-image:none !important; height:70px;}
+			.logoContainer img {max-width:100%;}
+
+			
+
+			.loginContainer {text-align:center;width:100%;background-color:#1f5f3b;padding:0px;min-width:271px;float:left;}
+			.loginContainer a {color:#999;}
+			.loginContainer .input-medium {width:47%;}
+			.loginContainer .input-medium[type="text"] {float:left;}
+			.loginContainer .input-medium[type="password"] {float:right;}
+			.loginContainer form {float:none;margin:auto;margin-bottom:15px;padding-top:15px;padding-bottom:10px;padding-left:10px;padding-right:10px;border:solid 1px #fff;border-radius: 10px;background-color:#eee;min-width:271px;max-width:317px;color:#666666;}
+			.loginContainer .credentialsContainer {float:none;margin:auto;margin-bottom:15px;padding-top:5px;padding-bottom:5px;padding-left:10px;padding-right:10px;border:solid 1px #fff;border-radius: 10px;background-color:#eee;min-width:210px;max-width:317px;color:#666666;}
+			.loginContainer .pull-right {float:none !important;}
+			.loginContainer .pull-right.credentials {float:none !important;clear:none;padding-bottom:4px;color:#666666;}
+			.loginContainer .credentialsContainer a {color:#666666;}
+			
+			.loginContainer .help {clear:both;padding-bottom:10px;}
+			.loginContainer .btn {margin-right:0px;}
+		}
+		
+		@media (max-width: 380px) {
+			.navbar .nav &gt; li &gt; a {font-size:12px;}
+			.headerRow {height: 50px;}
+			
+			
+			.navbar-toggle .nav &gt; li &gt; a {font-size:11px;padding:15px 15px;}
+			/*.navbar-collapse .nav &gt; li &gt; a {font-size:13px;padding-left:30px;}*/
+			.navbar .navbar-collapse {max-height: 1000px;}
+			/*.dropdown-menu &gt; li {border-bottom:solid 1px #ccc;}*/
+			.dropdown-menu &gt; li:last-child {border-bottom:solid 0px #ccc;}
+			.dropdown-menu .divider {display:none;}
+			.nav&gt;li&gt;a {padding-left:10px;padding-right:10px;}
+		}
+		
+		@media (max-width: 340px) {
+			
+			.logoContainer img {max-width:100%;}
+			
+			.navbar .nav &gt; li &gt; a {font-size:12px;}
+			.navbar-toggle .nav &gt; li &gt; a {font-size:11px;padding:10px 10px;}
+			/*.navbar-collapse .nav &gt; li &gt; a {font-size:11px;padding-left:30px;}
+			.dropdown-menu &gt; li {border-bottom:solid 1px #ccc;}*/
+			.dropdown-menu &gt; li:last-child {border-bottom:solid 0px #ccc;}
+			.navbar .navbar-collapse {max-height:  1000px;}
+			.dropdown-menu .divider {display:none;}
+			.nav&gt;li&gt;a {padding-left:8px;padding-right:8px;padding-top:5px;}
+		}
+		
+		
+				h1 {color:#000000;}
+				.headerRow {background-image:none;background-color:#555555;padding-top:10px;padding-bottom:12px;}
+				.headerRowExtended {background-color:#555555;}
+				#headerMain {background-color:#555555;}
+				#headerMainBG {visibility:hidden;}
+				#headerMainContent {color:#FFFFFF;}
+				#login {padding-top:15px;}
+				#login a {color:#FFFFFF}
+				#leagueName {color:#FFFFFF;}
+				#headerMainContent {top:0px;}
+				#logo {line-height:93px;}
+				
+				@media (min-width: 768px) {
+					.loginContainer {padding-top:5px;}
+					.loginContainer .credentialsContainer  {color:#FFFFFF;}
+					.loginContainer .credentialsContainer .credentials {color:#FFFFFF;}
+					.loginContainer .credentialsContainer a {color:#FFFFFF;}
+					.loginContainer a {color:#FFFFFF;}
+					.loginContainer form {color:#FFFFFF;}
+				}
+				@media (max-width: 767px) {
+					.loginContainer {background-color:#555555;}
+					.loginContainer .credentialsContainer  {margin-bottom:15px;}
+					.loginContainer form  {margin-bottom:0px;}
+					#leagueName {color:#666666;}
+				}
+				
+
+			
+		
+		@media print {
+		  a[href]:after {
+			content: none !important;
+		  }
+		  
+		  .noprint {display:none;}
+		}
+		</style>
+	</head>
+	<body>
+	<div class="headerRowExtended">
+		<div class="container">
+			<div class="headerRow">
+				<div class="logoContainer col-lg-5">
+					<a href="http://www.runyourpool.com/myaccount.cfm"><img src="//s3.amazonaws.com/league.runyourpool.com/customLogos/13022.gif" class="logo" alt="RunYourPool.com" /></a>
+				</div>
+				<div class="menuContainer">
+					 <ul class="nav navbar-nav navbar-toggle">
+					  <li class="dropdown" style="float:right;">
+					  		<a href="javascript:;" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle collapsed" style="font: normal normal normal 22px/1 FontAwesome; color:#ccc;">
+				                <i class="fa fa-reorder"></i>
+				            </a>
+					   </li>
+			  		</ul>
+				</div>
+
+				<div class="loginContainer col-lg-5 col-lg-offset-2 hidden-xs">
+					
+					<div class="credentialsContainer">
+						
+						    <div class="pull-right credentials">Logged in as: <b> toritowntigers</b></div>
+							<div class="pull-right credentials"><a href="http://www.runyourpool.com/myaccount.cfm">My Pool Memberships</a> | <a href="https://www.runyourpool.com/logout.cfm">Logout</a></div>
+                        	<div class="pull-right credentials"><div id="leagueName" style="padding-top:2px;font-size:13px;white-space:nowrap;">Current Pool: <b> BIG  RED</b></div></div>
+						
+						</div>
+					
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	
+	<link rel="stylesheet" href="/assets/css/notifications.css" />
+
+
+
+
+
+   
+ <!-- Modal -->
+<div class="modal fade" id="notificationModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+		</div> <!-- /.modal-content -->
+	</div> <!-- /.modal-dialog -->
+</div> <!-- /.modal -->
+
+<script>
+$('body').on('hidden.bs.modal', '.modal', function () {
+    $(this).removeData('bs.modal');
+});
+</script>
+<style>
+	.messageCount {
+	    position: absolute;
+	    top: -7px;
+	    left: 80%;
+	    padding: 0px 5px;
+	    border-radius: 30px;
+	    line-height: 16px;
+	    text-align: center;
+	    font-size: 10px;
+	    border-width: 2px;
+	    border-style: solid;
+	    color: #fff;
+	    background: #3071a9 !important;
+	    border-color: #555555;
+	}
+</style>
+
+
+
+<style>
+	
+	td {padding:3px;}
+</style>
+
+<div class="navRowExtended">
+	<div class="container">
+		<div class="navbar">
+		   <div class="container">
+			 
+
+			  <!-- Everything you want hidden at 940px or less, place within here -->
+			  <div class="navbar-collapse collapse" id="navbar-collapse-1">
+				<ul class="nav navbar-nav">
+				  <li id="liLogin" style="text-align:center;" class="text-center">
+	
+		<div class="loggedIn">Logged in as: <b> toritowntigers</b></div>
+		<div style="margin-bottom:10px;"><a href="/myaccount.cfm">Pool Memberships</a> <span style="color:#ddd;">|</span> <a href="/logout.cfm">Log Out</a></div>
+		
+	
+</li>
+                  <li class="width12"><a href="/nfl/confidence/reports/dashboard.cfm">Dashboard</a></li>
+                  <li class="dropdown width14">
+					<a href="/nfl/confidence/multiple_entries.cfm">Your Picks</a>
+                  </li>
+				  <li class="dropdown width12">
+                  		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports <b class="caret"></b></a>
+                         <ul class="dropdown-menu">
+                            <li class="disabled"><a tabindex="-1" href="#"><strong>Picks &amp; Standings</strong></a></li>
+							<li class="i"><a href="/nfl/confidence/standings2.cfm" class="noDecorBlack">Current Standings</a></li>
+							<li class="i"><a href="/nfl/confidence/reports/picks.cfm" class="noDecorBlack">Pool Member's Picks</a></li>
+							<li class="i"><a href="/nfl/confidence/reports/previous_weeks.cfm" class="noDecorBlack">Pool Week-by-Week</a></li>
+							<li class="i"><a href="/nfl/confidence/reports/pick_distribution.cfm" class="noDecorBlack">Weekly Pick Distribution </a></li>
+                            <li class="disabled"><a tabindex="-1" href="#"><strong>Statistics</strong></a></li>
+							<li class="i"><a href="/nfl/confidence/reports/handicap.cfm" class="noDecorBlack">Handicapping Report</a></li>
+							<li class="i"><a href="/nfl/confidence/reports/poolwide.cfm" class="noDecorBlack">Pool Statistics</a></li>
+                            <li class="disabled"><a tabindex="-1" href="#"><strong>NFL Results</strong></a></li>
+							<li class="i"><a href="/nfl/confidence/reports/nfl_results.cfm" class="noDecorBlack">Weekly NFL Games</a></li>
+							<li class="i"><a href="/nfl/confidence/reports/nfl_results_byteam.cfm" class="noDecorBlack">NFL Results by Team</a></li>
+                            <li class="disabled"><a tabindex="-1" href="#"><strong>Other</strong></a></li>
+							<li class="i"><a href="/nfl/confidence/reports/AdminPickChangeHistory.cfm" class="noDecorBlack">Administrator Pick Modifications</a></li>
+							<li class="i"><a href="/nfl/confidence/pool_history.cfm" class="noDecorBlack">Pool History</a></li>
+                        </ul>
+                  </li>
+				  <li class="dropdown width12">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Pool Info<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+                            <li><a href="/shared_includes/memberManagement/pool_entries.cfm">Pool Entries</a></li>
+                            <li><a href="/nfl/confidence/view_pool_settings.cfm" class="noDecorBlack">Pool Settings</a></li>
+						</ul>
+				  </li>
+                  
+				  <li class="dropdown width16">
+						<a href="/shared_includes/messageboard/index.cfm">Message Board </a>
+						
+				  </li>
+                  
+				  <li class="width12"><a href="/nfl/confidence/support.cfm">Support</a></li>
+                  <li class="width4">
+					<div class="notifications">
+	<!-- notification: general -->
+	<div class="notification-item general">
+		<div class="btn-group">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="">
+				<i class="fa fa-bell"></i> <span class="visible-xs  pull-left" style="margin-left:5px;"> Notifications </span>
+				
+			</a>
+			<ul class="dropdown-menu" role="menu">
+				<li class="notification-header">
+					<em>No unread notifications</em>
+					
+					<div class="pull-right"><a href="/shared_includes/notifications/markReadAll.cfm?destURL=%2Fnfl%2Fconfidence%2Freports%2Fnfl%5Fresults%2Ecfm">Mark all as read</a></div>
+				</li>
+				
+				<li class="notification-footer">
+					<a href="/shared_includes/notifications/NotificationHistory.cfm">View All Notifications</a>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+	<!-- end notification: general -->
+
+</div>
+					</li>
+				</ul>
+			  </div>
+		  </div>
+		</div>
+	</div>
+</div>
+	
+	<div class="contentRowExtended">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+				<!--CONTENT START-->
+<h1 style="margin:10px 0 10px 0;">Weekly NFL Games</h1>
+<style>
+.dayHeader {font-family: Segoe UI, Verdana, Arial, Helvetica, sans-serif ; font-size: 12pt; font-weight:bold; color:#666; margin-top:10px;}
+.gameRow {border: 1px solid #999; background-color:#ededed; margin:2px; height:46px; background-image:url(/images/gradients/nflResultsBG.jpg);}
+.gameTime {font-family: Segoe UI, Verdana, Arial, Helvetica, sans-serif ; font-size: 12pt; margin:10px 0 0 10px;}
+.gameResultWrapper {text-align:center;}
+
+.teamNameWrapperAway {margin-top:9px;  text-align:right;}
+.teamNameWrapperHome {margin-top:9px;  text-align:left;}
+.city {font-family: Segoe UI, Verdana, Arial, Helvetica, sans-serif ; font-size: 12pt;}
+/*.text {font-family: Segoe UI, Verdana, Arial, Helvetica, sans-serif ; font-size: 14pt;}*/
+.mascot {font-family: Segoe UI, Verdana, Helvetica, sans-serif ; font-size: 14pt; }
+.scoreBox {background-color:#FFFFFF; border:1px solid #666; height:40px;   text-align:center; font-family: Arial, Verdana, Helvetica, sans-serif ; font-size: 18pt ; font-weight:bold; margin-top:2px; }
+
+.score_away {background-color:#FFFFFF; color:#555; border:1px solid #666;height:40px; width:40px; text-align:center; font-family: Arial, Verdana, Helvetica, sans-serif ; font-size: 16pt ; font-weight:bold; padding-top:3px; }
+.score_home{background-color:#FFFFFF; color:#555; border:1px solid #666;height:40px; width:40px;  text-align:center; font-family: Arial, Verdana, Helvetica, sans-serif ; font-size: 16pt ; font-weight:bold; padding-top:3px;}
+.score {position:relative; top:5px; color:#555;}
+.spread {width:30px; text-align:center;}
+.table&gt;tbody&gt;tr&gt;td {border-top:none; padding:0; vertical-align:middle;}
+.table&gt;tbody&gt;tr {margin:2px;}
+.table&gt;tbody&gt;tr&gt;th {border-top:none;}
+.dateTime {margin-left:10px;}
+</style>
+
+
+<form action="nfl_results.cfm" method="post">
+	<span class="black10">Select a week: </span>
+	<select name="week" style="font-size:12px;" class="form_select" onchange="this.form.submit();">
+		<option value="1"></option>
+		
+		<option value="1">Week 1</option>
+		
+		<option value="2">Week 2</option>
+		
+		<option value="3">Week 3</option>
+		
+		<option value="4">Week 4</option>
+		
+		<option value="5">Week 5</option>
+		
+		<option value="6">Week 6</option>
+		
+		<option value="7">Week 7</option>
+		
+		<option value="8">Week 8</option>
+		
+		<option value="9">Week 9</option>
+		
+		<option value="10">Week 10</option>
+		
+		<option value="11">Week 11</option>
+		
+		<option value="12">Week 12</option>
+		
+		<option value="13">Week 13</option>
+		
+		<option value="14" selected="selected">Week 14</option>
+		
+		<option value="15">Week 15</option>
+		
+		<option value="16">Week 16</option>
+		
+		<option value="17">Week 17</option>
+		
+		<option value="18">Wild Card Weekend</option>
+		
+		<option value="19">Divisional Playoffs</option>
+		
+		<option value="20">Conference Championships</option>
+		
+		<option value="21">Super Bowl</option>
+		
+		<option value="22">Season Complete</option>
+		
+	</select>
+</form>
+
+
+
+	<hr />
+	<h3 style="margin-top:5;">Week 14</h3>
+<div class="black9" style="padding-bottom:5px;">Note: Point spreads are entered on Tuesdays</div>
+	
+	
+    <table class="table">
+	  
+        <tbody><tr>
+            <th colspan="6">
+                <div class="dayHeader">
+                    <div style=" padding:3px;">Thursday, December 8</div>
+                    <div style="clear:both;"></div>
+                </div>
+            </th>
+        </tr>
+    	
+			<tr class="gameRow">
+            	<td><div class="dateTime">8:25 PM ET</div></td>
+                <td align="right"><span class="city hidden-xs">Oakland</span> <span class="mascot hidden-xs hidden-sm hidden-md">Raiders</span><img src="/images/team_logos/nfl/small/12.png" hspace="5" /></td>
+                <td align="center"><div class="score_away">13</div></td>
+                <td align="center">
+                	 
+                    	<span class="spread black10">(+3.5)</span>
+                    
+                </td>
+                <td align="center"><div class="score_home">21</div></td>
+                <td><img src="/images/team_logos/nfl/small/11.png" hspace="5" /><span class="city hidden-xs">Kansas City</span> <span class="mascot hidden-xs hidden-sm hidden-md">Chiefs</span></td>
+
+            </tr>
+        	
+        
+
+        
+        <tr>
+            <th colspan="6">
+                <div class="dayHeader">
+                    <div style=" padding:3px;">Sunday, December 11</div>
+                    <div style="clear:both;"></div>
+                </div>
+            </th>
+        </tr>
+    	
+			<tr class="gameRow">
+            	<td><div class="dateTime">1:00 PM ET</div></td>
+                <td align="right"><span class="city hidden-xs">Pittsburgh</span> <span class="mascot hidden-xs hidden-sm hidden-md">Steelers</span><img src="/images/team_logos/nfl/small/9.png" hspace="5" /></td>
+                <td align="center"><div class="score_away">27</div></td>
+                <td align="center">
+                	 
+                    	<span class="spread black10">(-2.5)</span>
+                    
+                </td>
+                <td align="center"><div class="score_home">20</div></td>
+                <td><img src="/images/team_logos/nfl/small/1.png" hspace="5" /><span class="city hidden-xs">Buffalo</span> <span class="mascot hidden-xs hidden-sm hidden-md">Bills</span></td>
+
+            </tr>
+        	
+        
+
+        
+			<tr class="gameRow">
+            	<td><div class="dateTime">1:00 PM ET</div></td>
+                <td align="right"><span class="city hidden-xs">Houston</span> <span class="mascot hidden-xs hidden-sm hidden-md">Texans</span><img src="/images/team_logos/nfl/small/32.png" hspace="5" /></td>
+                <td align="center"><div class="score_away">22</div></td>
+                <td align="center">
+                	 
+                    	<span class="spread black10">(+6.5)</span>
+                    
+                </td>
+                <td align="center"><div class="score_home">17</div></td>
+                <td><img src="/images/team_logos/nfl/small/2.png" hspace="5" /><span class="city hidden-xs">Indianapolis</span> <span class="mascot hidden-xs hidden-sm hidden-md">Colts</span></td>
+
+            </tr>
+        	
+        
+
+        
+			<tr class="gameRow">
+            	<td><div class="dateTime">1:00 PM ET</div></td>
+                <td align="right"><span class="city hidden-xs">Washington</span> <span class="mascot hidden-xs hidden-sm hidden-md">Redskins</span><img src="/images/team_logos/nfl/small/19.png" hspace="5" /></td>
+                <td align="center"><div class="score_away">27</div></td>
+                <td align="center">
+                	 
+                    	<span class="spread black10">(-1.5)</span>
+                    
+                </td>
+                <td align="center"><div class="score_home">22</div></td>
+                <td><img src="/images/team_logos/nfl/small/17.png" hspace="5" /><span class="city hidden-xs">Philadelphia</span> <span class="mascot hidden-xs hidden-sm hidden-md">Eagles</span></td>
+
+            </tr>
+        	
+        
+
+        
+			<tr class="gameRow">
+            	<td><div class="dateTime">1:00 PM ET</div></td>
+                <td align="right"><span class="city hidden-xs">Denver</span> <span class="mascot hidden-xs hidden-sm hidden-md">Broncos</span><img src="/images/team_logos/nfl/small/10.png" hspace="5" /></td>
+                <td align="center"><div class="score_away">10</div></td>
+                <td align="center">
+                	 
+                    	<span class="spread black10">(+1.5)</span>
+                    
+                </td>
+                <td align="center"><div class="score_home">13</div></td>
+                <td><img src="/images/team_logos/nfl/small/8.png" hspace="5" /><span class="city hidden-xs">Tennessee</span> <span class="mascot hidden-xs hidden-sm hidden-md">Titans</span></td>
+
+            </tr>
+        	
+        
+
+        
+			<tr class="gameRow">
+            	<td><div class="dateTime">1:00 PM ET</div></td>
+                <td align="right"><span class="city hidden-xs">New Orleans</span> <span class="mascot hidden-xs hidden-sm hidden-md">Saints</span><img src="/images/team_logos/nfl/small/27.png" hspace="5" /></td>
+                <td align="center"><div class="score_away">11</div></td>
+                <td align="center">
+                	 
+                    	<span class="spread black10">(+2.5)</span>
+                    
+                </td>
+                <td align="center"><div class="score_home">16</div></td>
+                <td><img src="/images/team_logos/nfl/small/24.png" hspace="5" /><span class="city hidden-xs">Tampa Bay</span> <span class="mascot hidden-xs hidden-sm hidden-md">Buccaneers</span></td>
+
+            </tr>
+        	
+        
+
+        
+			<tr class="gameRow">
+            	<td><div class="dateTime">1:00 PM ET</div></td>
+                <td align="right"><span class="city hidden-xs">San Diego</span> <span class="mascot hidden-xs hidden-sm hidden-md">Chargers</span><img src="/images/team_logos/nfl/small/13.png" hspace="5" /></td>
+                <td align="center"><div class="score_away">16</div></td>
+                <td align="center">
+                	 
+                    	<span class="spread black10">(+1.5)</span>
+                    
+                </td>
+                <td align="center"><div class="score_home">28</div></td>
+                <td><img src="/images/team_logos/nfl/small/29.png" hspace="5" /><span class="city hidden-xs">Carolina</span> <span class="mascot hidden-xs hidden-sm hidden-md">Panthers</span></td>
+
+            </tr>
+        	
+        
+
+        
+			<tr class="gameRow">
+            	<td><div class="dateTime">1:00 PM ET</div></td>
+                <td align="right"><span class="city hidden-xs">Cincinnati</span> <span class="mascot hidden-xs hidden-sm hidden-md">Bengals</span><img src="/images/team_logos/nfl/small/6.png" hspace="5" /></td>
+                <td align="center"><div class="score_away">23</div></td>
+                <td align="center">
+                	 
+                    	<span class="spread black10">(-5.5)</span>
+                    
+                </td>
+                <td align="center"><div class="score_home">10</div></td>
+                <td><img src="/images/team_logos/nfl/small/7.png" hspace="5" /><span class="city hidden-xs">Cleveland</span> <span class="mascot hidden-xs hidden-sm hidden-md">Browns</span></td>
+
+            </tr>
+        	
+        
+
+        
+			<tr class="gameRow">
+            	<td><div class="dateTime">1:00 PM ET</div></td>
+                <td align="right"><span class="city hidden-xs">Chicago</span> <span class="mascot hidden-xs hidden-sm hidden-md">Bears</span><img src="/images/team_logos/nfl/small/20.png" hspace="5" /></td>
+                <td align="center"><div class="score_away">17</div></td>
+                <td align="center">
+                	 
+                    	<span class="spread black10">(+8.5)</span>
+                    
+                </td>
+                <td align="center"><div class="score_home">20</div></td>
+                <td><img src="/images/team_logos/nfl/small/21.png" hspace="5" /><span class="city hidden-xs">Detroit</span> <span class="mascot hidden-xs hidden-sm hidden-md">Lions</span></td>
+
+            </tr>
+        	
+        
+
+        
+			<tr class="gameRow">
+            	<td><div class="dateTime">1:00 PM ET</div></td>
+                <td align="right"><span class="city hidden-xs">Minnesota</span> <span class="mascot hidden-xs hidden-sm hidden-md">Vikings</span><img src="/images/team_logos/nfl/small/23.png" hspace="5" /></td>
+                <td align="center"><div class="score_away">25</div></td>
+                <td align="center">
+                	 
+                    	<span class="spread black10">(-3.5)</span>
+                    
+                </td>
+                <td align="center"><div class="score_home">16</div></td>
+                <td><img src="/images/team_logos/nfl/small/30.png" hspace="5" /><span class="city hidden-xs">Jacksonville</span> <span class="mascot hidden-xs hidden-sm hidden-md">Jaguars</span></td>
+
+            </tr>
+        	
+        
+
+        
+			<tr class="gameRow">
+            	<td><div class="dateTime">1:00 PM ET</div></td>
+                <td align="right"><span class="city hidden-xs">Arizona</span> <span class="mascot hidden-xs hidden-sm hidden-md">Cardinals</span><img src="/images/team_logos/nfl/small/18.png" hspace="5" /></td>
+                <td align="center"><div class="score_away">23</div></td>
+                <td align="center">
+                	 
+                    	<span class="spread black10">(+1.5)</span>
+                    
+                </td>
+                <td align="center"><div class="score_home">26</div></td>
+                <td><img src="/images/team_logos/nfl/small/3.png" hspace="5" /><span class="city hidden-xs">Miami</span> <span class="mascot hidden-xs hidden-sm hidden-md">Dolphins</span></td>
+
+            </tr>
+        	
+        
+
+        
+			<tr class="gameRow">
+            	<td><div class="dateTime">4:05 PM ET</div></td>
+                <td align="right"><span class="city hidden-xs">New York</span> <span class="mascot hidden-xs hidden-sm hidden-md">Jets</span><img src="/images/team_logos/nfl/small/5.png" hspace="5" /></td>
+                <td align="center"><div class="score_away">23</div></td>
+                <td align="center">
+                	 
+                    	<span class="spread black10">(+2.5)</span>
+                    
+                </td>
+                <td align="center"><div class="score_home">17</div></td>
+                <td><img src="/images/team_logos/nfl/small/28.png" hspace="5" /><span class="city hidden-xs">San Francisco</span> <span class="mascot hidden-xs hidden-sm hidden-md">49ers</span></td>
+
+            </tr>
+        	
+        
+
+        
+			<tr class="gameRow">
+            	<td><div class="dateTime">4:25 PM ET</div></td>
+                <td align="right"><span class="city hidden-xs">Seattle</span> <span class="mascot hidden-xs hidden-sm hidden-md">Seahawks</span><img src="/images/team_logos/nfl/small/14.png" hspace="5" /></td>
+                <td align="center"><div class="score_away">10</div></td>
+                <td align="center">
+                	 
+                    	<span class="spread black10">(-2.5)</span>
+                    
+                </td>
+                <td align="center"><div class="score_home">38</div></td>
+                <td><img src="/images/team_logos/nfl/small/22.png" hspace="5" /><span class="city hidden-xs">Green Bay</span> <span class="mascot hidden-xs hidden-sm hidden-md">Packers</span></td>
+
+            </tr>
+        	
+        
+
+        
+			<tr class="gameRow">
+            	<td><div class="dateTime">4:25 PM ET</div></td>
+                <td align="right"><span class="city hidden-xs">Atlanta</span> <span class="mascot hidden-xs hidden-sm hidden-md">Falcons</span><img src="/images/team_logos/nfl/small/25.png" hspace="5" /></td>
+                <td align="center"><div class="score_away">42</div></td>
+                <td align="center">
+                	 
+                    	<span class="spread black10">(-6.5)</span>
+                    
+                </td>
+                <td align="center"><div class="score_home">14</div></td>
+                <td><img src="/images/team_logos/nfl/small/26.png" hspace="5" /><span class="city hidden-xs">Los Angeles</span> <span class="mascot hidden-xs hidden-sm hidden-md">Rams</span></td>
+
+            </tr>
+        	
+        
+
+        
+			<tr class="gameRow">
+            	<td><div class="dateTime">8:30 PM ET</div></td>
+                <td align="right"><span class="city hidden-xs">Dallas</span> <span class="mascot hidden-xs hidden-sm hidden-md">Cowboys</span><img src="/images/team_logos/nfl/small/15.png" hspace="5" /></td>
+                <td align="center"><div class="score_away">7</div></td>
+                <td align="center">
+                	 
+                    	<span class="spread black10">(-3.5)</span>
+                    
+                </td>
+                <td align="center"><div class="score_home">10</div></td>
+                <td><img src="/images/team_logos/nfl/small/16.png" hspace="5" /><span class="city hidden-xs">New York</span> <span class="mascot hidden-xs hidden-sm hidden-md">Giants</span></td>
+
+            </tr>
+        	
+        
+
+        
+        <tr>
+            <th colspan="6">
+                <div class="dayHeader">
+                    <div style=" padding:3px;">Monday, December 12</div>
+                    <div style="clear:both;"></div>
+                </div>
+            </th>
+        </tr>
+    	
+			<tr class="gameRow">
+            	<td><div class="dateTime">8:30 PM ET</div></td>
+                <td align="right"><span class="city hidden-xs">Baltimore</span> <span class="mascot hidden-xs hidden-sm hidden-md">Ravens</span><img src="/images/team_logos/nfl/small/31.png" hspace="5" /></td>
+                <td align="center"><div class="score_away">23</div></td>
+                <td align="center">
+                	 
+                    	<span class="spread black10">(+7.5)</span>
+                    
+                </td>
+                <td align="center"><div class="score_home">30</div></td>
+                <td><img src="/images/team_logos/nfl/small/4.png" hspace="5" /><span class="city hidden-xs">New England</span> <span class="mascot hidden-xs hidden-sm hidden-md">Patriots</span></td>
+
+            </tr>
+        	
+        
+
+        
+      </tbody></table>
+	<!--CONTENT END-->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footerRowExtended">
+		<div class="container">
+            <div id="footerMain"><br />
+				
+            	<a href="https://www.runyourpool.com/testimonials.cfm">Testimonials</a> | 
+                <a href="https://www.runyourpool.com/terms_of_service.cfm">Terms of Service</a> | 
+                <a href="https://www.runyourpool.com/privacy.cfm">Privacy Statement</a> |
+                <a href="https://www.runyourpool.com/contact.cfm">Contact Us</a>
+				
+                <br /><br />
+                Copyright © 2004-2017 runyourpool.com<br />
+                FOR ENTERTAINMENT PURPOSES ONLY
+                <div>
+                	RunYourPool.com is a privately run site owned by RYP Technologies, and is in no way affiliated with the National Football League (NFL), Major League Baseball (MLB), National Collegiate Athletic Association (NCAA), National Basketball Association (NBA), National Hockey League (NHL), PGA Tour, American Academy of Motion Picture Arts and Sciences (AMPAS) or the properties, affiliates or organizations of any professional or collegiate leagues, teams, or entities.
+                </div>
+                <br /><br />
+            </div>
+		</div>
+    </div>
+	
+	<script>
+	$(document).ready(function() {
+	   $(".nav li.disabled a").click(function() {
+	     return false;
+	   });
+	});
+	</script>
+
+	
+
+
+	<!--[if lt IE 10]>
+		<script src="/bootstrap3.3.7/js/placeholder-enhanced.min.js"></script>
+	<![endif]-->
+	
+		
+	<!--[if lte IE 8]>
+		<script src="/bootstrap3.3.7/js/respond.min.js"></script>
+
+		
+		 <div class="modal fade" id="myModal">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				  <h4 class="modal-title">Browser Not Supported</h4>
+				</div>
+				<div class="modal-body" style="font-size:16px;">
+				  The browser you are using (Internet Explorer 8 or earlier) is past end of life and is no longer supported. Please upgrade your browser, or download a modern browser like <a href="https://www.google.com/chrome">Chrome</a>.
+				  <br><br>
+				</div>
+
+			  </div>
+			</div>
+		  </div>
+		  <script>
+		  document.getElementById("myModal").style.display = 'block';
+		  </script>
+	<![endif]-->
+	
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-458701-1', 'auto');
+	  ga('send', 'pageview');
+	  
+	</script>
+
+</body></html>
