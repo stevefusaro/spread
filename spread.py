@@ -1,6 +1,5 @@
 import argparse
-from pprint import pprint
-from crawl import get_nfl_html, extract_html_games
+from crawl import get_html_scores_by_week, html_scores_to_json
 
 
 def _parse_args():
@@ -10,22 +9,36 @@ def _parse_args():
     return parser.parse_args()
 
 
-def _make_picks(week_games):
-    week_games.sort(key=lambda x: -x['spread_float'])
+def _get_spread_picks(week_games):
     picks = {}
     points = 16
-    won = 0
-    for g in week_games:
-        pick = g['home_team'] if g['spread_dir'] == '+' else g['away_team']
-        picks[points] = pick
-        if pick == g['won_team']:
-            won += points
-            g['outcome'] = 'won'
-        else:
-            g['outcome'] = 'lost'
-        g['pick'] = '{} for {} pts'.format(pick, points)
-        g['points'] = points
+    week_games.sort(key=lambda x: -x['spread_float'])
+    for game in week_games:
+        pick = game['home_team'] if game['spread_dir'] == '+' else game['away_team']
+        picks[points] = (game, pick)
         points -= 1
+    return picks
+
+
+def _make_picks(week_games):
+    picks = _get_spread_picks(week_games)
+    won = 0
+    for points, (game, pick) in sorted(picks.items(), key=lambda x: -x[0]):
+        if pick == game['won_team']:
+            outcome = 'won'
+            won += points
+        else:
+            outcome = 'lost'
+
+        print('{points:>2}: {pick:<3}  {outcome:<4}  ({away_team:<3} @ {home_team:<3} {spread_str})'.format(
+            points=points,
+            pick=pick,
+            outcome=outcome,
+            away_team=game['away_team'],
+            home_team=game['home_team'],
+            spread_str=game['spread_str']
+        ))
+
     spreads = [g['spread_float'] for g in week_games]
     error = len(spreads) - len(set(spreads))
     return won, error
@@ -33,22 +46,17 @@ def _make_picks(week_games):
 
 def main():
     args = _parse_args()
-    week_html = get_nfl_html(args.weeks, args.source)
     points_won = 0
     points_error = 0
-    for week, html in week_html.items():
-        print('---- WEEK {} ----'.format(week))
-        games = extract_html_games(html)
+    html_by_week = get_html_scores_by_week(args.weeks, args.source)
+    for week, html in html_by_week.items():
+        print('---- Week {} ----'.format(week))
+        games = html_scores_to_json(html)
         won, error = _make_picks(games)
         points_won += won
         points_error += error
-        games.sort(key=lambda x: -x['points'])
-        for g in games:
-            print('{} {} {} {} {} picked {} and {}'.format(
-                g['home_team'], g['away_team'], g['home_score'], g['away_score'],
-                g['spread_str'], g['pick'], g['outcome'])
-            )
-    print('Total: {} points (+/- {})'.format(points_won, points_error))
-    print('Range: {} - {}'.format(points_won - points_error, points_won + points_error))
+
+    print('\nTotal points for Spread: {} points (+/- {})\n'.format(points_won, points_error))
+
 if __name__ == '__main__':
     main()

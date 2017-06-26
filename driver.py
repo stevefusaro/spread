@@ -1,6 +1,8 @@
-from selenium import webdriver
+import getpass
 import pickle
 import time
+
+from selenium import webdriver
 
 from constants import DATA_DIR
 
@@ -23,16 +25,19 @@ def get_driver(force_new_cookie=True):
             driver.add_cookie(cookie)
     except IOError:
         _login(driver)
-        #pickle.dump(driver.get_cookies(), open(cookie_path, 'wb'))
+        pickle.dump(driver.get_cookies(), open(cookie_path, 'wb'))
     return driver
 
 
 def _login(driver):
+    username = input('RunYourPool Username: ')
+    password = getpass.getpass('RunYourPool Password: ')
+
     el = driver.find_element_by_name('username')
-    el.send_keys('toritowntigers')
+    el.send_keys(username)
 
     el = driver.find_element_by_name('password')
-    el.send_keys('ezpass')
+    el.send_keys(password)
 
     submit = driver.find_element_by_css_selector('button[type=submit]')
     submit.click()
