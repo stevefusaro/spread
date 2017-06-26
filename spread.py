@@ -26,24 +26,29 @@ def _make_picks(week_games):
         g['pick'] = '{} for {} pts'.format(pick, points)
         g['points'] = points
         points -= 1
-
-    return won
+    spreads = [g['spread_float'] for g in week_games]
+    error = len(spreads) - len(set(spreads))
+    return won, error
 
 
 def main():
     args = _parse_args()
     week_html = get_nfl_html(args.weeks, args.source)
     points_won = 0
+    points_error = 0
     for week, html in week_html.items():
         print('---- WEEK {} ----'.format(week))
         games = extract_html_games(html)
-        points_won += _make_picks(games)
+        won, error = _make_picks(games)
+        points_won += won
+        points_error += error
         games.sort(key=lambda x: -x['points'])
         for g in games:
             print('{} {} {} {} {} picked {} and {}'.format(
                 g['home_team'], g['away_team'], g['home_score'], g['away_score'],
                 g['spread_str'], g['pick'], g['outcome'])
             )
-    print('Total: {} points'.format(points_won))
+    print('Total: {} points (+/- {})'.format(points_won, points_error))
+    print('Range: {} - {}'.format(points_won - points_error, points_won + points_error))
 if __name__ == '__main__':
     main()
