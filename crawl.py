@@ -1,3 +1,4 @@
+from collections import namedtuple
 import time
 
 from bs4 import BeautifulSoup
@@ -5,6 +6,15 @@ from selenium.webdriver.support.ui import Select
 
 from constants import ABREV_BY_MASCOT, DATA_DIR
 from driver import get_driver
+
+Game = namedtuple('Point', [
+    'away_team', 'away_score', 'home_team',
+    'home_score',
+    'spread_str',  # e.g. "+1" or "-0.5"
+    'spread_float',
+    'spread_dir',  # TODO rename dir to directon,
+    'won_team', 'lost_team'
+])
 
 
 def _fetch_week_html(driver, week):
@@ -45,9 +55,9 @@ def get_html_scores_by_week(weeks, source):
     return html_by_week
 
 
-def html_scores_to_json(html):
+def html_scores_to_games(html):
     """
-    Locate and parse an HTML table of NFL scores.
+    Parse an HTML table of NFL scores. Returns Game objects.
     Columns are: date, away_team, away_score, spread, home_score, home_team.
     """
     games = []
@@ -73,16 +83,17 @@ def html_scores_to_json(html):
             won_team = away_team
             lost_team = home_team
 
-        games.append({
-            'away_team': away_team,
-            'away_score': away_score,
-            'home_team': home_team,
-            'home_score': home_score,
-            'spread_str': spread,  # e.g. "+1" or "-0.5"
-            'spread_float': float(spread[1:]),
-            'spread_dir': spread[0],   # TODO rename dir to directon,
-            'won_team': won_team,
-            'lost_team': lost_team
-        })
+        game = Game(
+            away_team=away_team,
+            away_score=away_score,
+            home_team=home_team,
+            home_score=home_score,
+            spread_str=spread,
+            spread_float=float(spread[1:]),
+            spread_dir=spread[0],
+            won_team=won_team,
+            lost_team=lost_team
+        )
+        games.append(game)
 
     return games
