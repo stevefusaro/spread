@@ -44,19 +44,23 @@ def _make_picks(week_games):
     return won, error
 
 
-def main():
-    args = _parse_args()
+def calculate_spread_score(weeks, source):
     points_won = 0
     points_error = 0
-    html_by_week = get_html_scores_by_week(args.weeks, args.source)
+    html_by_week = get_html_scores_by_week(weeks, source)
     for week, html in html_by_week.items():
         print('---- Week {} ----'.format(week))
         games = html_scores_to_json(html)
         won, error = _make_picks(games)
         points_won += won
         points_error += error
+    return points_won, points_error
 
-    print('\nTotal points for Spread: {} points (+/- {})\n'.format(points_won, points_error))
+
+def main():
+    args = _parse_args()
+    points, error = calculate_spread_score(args.weeks, args.source)
+    print('\nTotal points for Spread: {} points (+/- {})\n'.format(points, error))
 
 if __name__ == '__main__':
     main()
