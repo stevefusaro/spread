@@ -1,3 +1,5 @@
+NFL_WEEKLY_MAX_GAME_COUNT = 16
+
 ABREV_BY_MASCOT = {
     'Patriots': 'NE',
     'Jets': 'NYJ',

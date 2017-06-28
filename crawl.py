@@ -6,15 +6,7 @@ from selenium.webdriver.support.ui import Select
 
 from constants import ABREV_BY_MASCOT, DATA_DIR
 from driver import get_driver
-
-Game = namedtuple('Point', [
-    'away_team', 'away_score', 'home_team',
-    'home_score',
-    'spread_str',  # e.g. "+1" or "-0.5"
-    'spread_float',
-    'spread_dir',  # TODO rename dir to directon,
-    'won_team', 'lost_team'
-])
+from game import Game
 
 
 def _fetch_week_html(driver, week):
@@ -42,9 +34,9 @@ def _get_week_html(driver, week, force_update):
 
 def get_html_scores_by_week(weeks, source):
     assert source in ('file', 'web')
+    html_by_week = {}
     force_update = False if source == 'file' else True
     driver = get_driver() if source == 'web' else None
-    html_by_week = {}
     try:
         for week in weeks:
             html = _get_week_html(driver, week, force_update)
@@ -76,23 +68,13 @@ def html_scores_to_games(html):
         home_team = ABREV_BY_MASCOT[home_mascot]
         home_score = int(row.find(class_='score_home').text)
 
-        if home_score > away_score:
-            won_team = home_team
-            lost_team = away_team
-        else:
-            won_team = away_team
-            lost_team = home_team
-
         game = Game(
             away_team=away_team,
             away_score=away_score,
             home_team=home_team,
             home_score=home_score,
-            spread_str=spread,
             spread_float=float(spread[1:]),
-            spread_dir=spread[0],
-            won_team=won_team,
-            lost_team=lost_team
+            spread_dir=spread[0]
         )
         games.append(game)
 

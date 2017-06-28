@@ -1,9 +1,10 @@
+from constants import NFL_WEEKLY_MAX_GAME_COUNT
 from crawl import get_html_scores_by_week, html_scores_to_games
 
 
 def _get_spread_picks(week_games):
     picks = {}
-    points = 16
+    points = NFL_WEEKLY_MAX_GAME_COUNT
     week_games.sort(key=lambda x: -x.spread_float)
     for game in week_games:
         pick = game.home_team if game.spread_dir == '+' else game.away_team
@@ -38,12 +39,12 @@ def _make_picks(week_games):
 
 def calculate_spread_score(weeks, source):
     points_won = 0
-    points_error = 0
+    error_margin = 0
     html_by_week = get_html_scores_by_week(weeks, source)
     for week, html in html_by_week.items():
         print('---- Week {} ----'.format(week))
         games = html_scores_to_games(html)
-        won, error = _make_picks(games)
-        points_won += won
-        points_error += error
-    return points_won, points_error
+        _points_won, _error_margin = _make_picks(games)
+        points_won += _points_won
+        error_margin += _error_margin
+    return points_won, error_margin
